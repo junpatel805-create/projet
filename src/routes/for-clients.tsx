@@ -44,7 +44,7 @@ function ForClients() {
             <div className="mt-6 flex items-center gap-1.5 text-sm">
               <Star className="h-4 w-4 fill-warning text-warning" />
               <span className="font-semibold">4.9 / 5</span>
-              <span className="text-muted-foreground">from 28,400 client reviews</span>
+              <span className="text-muted-foreground">from 29,400 client reviews</span>
             </div>
           </div>
           <div className="rounded-3xl border border-border bg-card p-6 shadow-elevated">
