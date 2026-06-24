@@ -5,7 +5,6 @@
 //     error logger plugins, and sandbox detection (port/host/strictPort).
 // You can pass additional config via defineConfig({ vite: { ... } }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
-import { nitro as nitroPlugin } from "nitro/vite"; // 👈 Clean ES import instead of require
 
 // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
 // @cloudflare/vite-plugin builds from this — wrangler.jsonc main alone is insufficient.
@@ -16,16 +15,19 @@ export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
   },
-  // 🔽 Inject the vercel preset plugin safely when running on Vercel's build machines
+  // 🔽 Safely handle the Nitro Vercel target injection via a dynamic async loader hook
   vite: {
     plugins: [
-      ...(process.env.VERCEL 
-        ? [
-            nitroPlugin({
-              preset: "vercel",
-            })
-          ]
-        : [])
+      {
+        name: "vercel-nitro-injector",
+        async configResolved() {
+          if (process.env.VERCEL) {
+            const { nitro } = await import("nitro/vite");
+            // Injecting the Vercel compilation layer cleanly
+            nitro({ preset: "vercel" });
+          }
+        }
+      }
     ]
   }
 });
