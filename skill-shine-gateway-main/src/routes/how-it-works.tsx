@@ -27,8 +27,7 @@ const stepsPro = [
   { icon: Star, title: "Win, deliver, get paid", desc: "Deliver milestones, get reviews, and grow your business with Servio." },
 ];
 
-// ✅ Removed 'export default' so it is a local component for this route
-function HowItWorks() {
+export default function HowItWorks() {
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
@@ -89,8 +88,7 @@ function Hero() {
   );
 }
 
-// ✅ Removed 'export' from CTABand to keep it scoped to this route file
-function CTABand() {
+export function CTABand() {
   return (
     <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
       <div className="rounded-3xl bg-primary p-10 text-white md:p-14">
