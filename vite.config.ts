@@ -6,13 +6,10 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
-  // Force TanStack Start to compile everything as pure flat HTML files
   tanstackStart: {
-    prerender: {
-      enabled: true,
-    }
+    server: { entry: "server" },
   },
   nitro: {
-    preset: "static"
+    preset: "vercel-edge", // Blazing fast edge functions, works out-of-the-box
   }
 });
