@@ -10,6 +10,6 @@ export default defineConfig({
     server: { entry: "server" },
   },
   nitro: {
-    preset: "vercel-edge", // Blazing fast edge functions, works out-of-the-box
+    preset: "vercel" // Reverted to standard Vercel to fix the missing entry error
   }
 });
