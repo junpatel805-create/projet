@@ -4,6 +4,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { Button } from "@/components/ui/button";
 import { ProCard } from "@/components/ProCard";
 import { categories, professionals, testimonials } from "@/lib/mock-data";
+import { mapImage } from "@/lib/map-image";
 import {
   Search, MapPin, ArrowRight, Star, ShieldCheck, BadgeCheck,
   ClipboardList, MessageSquare, Wallet, Users, Briefcase, Building2, Award,
@@ -106,8 +107,8 @@ function Landing() {
 
               <div className="absolute left-0 top-44 w-[280px] rounded-2xl border border-border bg-card p-5 shadow-elevated">
                 <p className="text-[10px] uppercase tracking-widest text-primary">Map preview</p>
-                <div className="mt-2 grid h-32 place-items-center rounded-lg bg-gradient-to-br from-primary/10 via-accent to-success/10">
-                  <MapPin className="h-6 w-6 text-primary" />
+                <div className="mt-2 overflow-hidden rounded-lg border border-border bg-background">
+                  <img src={mapImage} alt="Map preview" className="h-32 w-full object-cover" />
                 </div>
                 <p className="mt-3 text-xs text-muted-foreground">3 pros within 2km · Surat</p>
               </div>
@@ -224,26 +225,8 @@ function Landing() {
             <p className="mt-3 text-muted-foreground">Distance, ratings and availability — all on one map.</p>
           </div>
           <div className="mt-10 grid gap-6 lg:grid-cols-[2fr_1fr]">
-            <div className="relative h-[420px] overflow-hidden rounded-2xl border border-border shadow-soft">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-accent to-success/10" />
-              <div
-                className="absolute inset-0 opacity-40"
-                style={{ backgroundImage: "linear-gradient(to right, rgba(30,58,138,.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(30,58,138,.08) 1px, transparent 1px)", backgroundSize: "40px 40px" }}
-              />
-              {professionals.slice(0, 5).map((p, i) => (
-                <div
-                  key={p.id}
-                  className="absolute"
-                  style={{ top: `${15 + i * 14}%`, left: `${10 + i * 16}%` }}
-                >
-                  <div className="relative">
-                    <span className="absolute inset-0 -m-2 animate-ping rounded-full bg-primary/30" />
-                    <span className="relative grid h-10 w-10 place-items-center rounded-full bg-primary text-primary-foreground shadow-elevated ring-4 ring-surface">
-                      <MapPin className="h-4 w-4" />
-                    </span>
-                  </div>
-                </div>
-              ))}
+            <div className="relative h-[420px] overflow-hidden rounded-2xl border border-border shadow-soft bg-background">
+              <img src={mapImage} alt="Map preview" className="h-full w-full object-cover" />
               <div className="absolute bottom-4 left-4 rounded-xl bg-surface px-4 py-3 text-xs shadow-card">
                 <p className="font-semibold text-foreground">Showing 12 pros</p>
                 <p className="text-muted-foreground">within 5 km • Surat</p>

@@ -2,26 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { AppShell } from "@/components/AppShell";
 import { ProCard } from "@/components/ProCard";
 import { professionals, categories } from "@/lib/mock-data";
+import { mapImage } from "@/lib/map-image";
 import { Map, SlidersHorizontal, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-
-const mapImage = `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420">
-  <rect width="800" height="420" fill="#eff6ff"/>
-  <rect x="40" y="40" width="720" height="340" rx="28" fill="#ffffff" stroke="#dbeafe" stroke-width="4"/>
-  <path d="M120 120 L220 120 L260 160 L340 160 L380 120 L460 120" fill="none" stroke="#93c5fd" stroke-width="18" stroke-linecap="round"/>
-  <path d="M180 220 L260 220 L300 260 L380 260 L420 220 L500 220" fill="none" stroke="#bfdbfe" stroke-width="14" stroke-linecap="round"/>
-  <path d="M140 280 L220 280 L260 240 L320 240 L360 280 L440 280" fill="none" stroke="#c7d2fe" stroke-width="10" stroke-linecap="round"/>
-  <rect x="120" y="60" width="120" height="40" rx="12" fill="#eef2ff"/>
-  <rect x="520" y="80" width="140" height="36" rx="10" fill="#eef2ff"/>
-  <circle cx="180" cy="110" r="10" fill="#2563eb"/>
-  <circle cx="380" cy="140" r="10" fill="#2563eb"/>
-  <circle cx="340" cy="240" r="10" fill="#2563eb"/>
-  <circle cx="520" cy="195" r="10" fill="#2563eb"/>
-  <text x="100" y="330" fill="#3b82f6" font-family="Inter, sans-serif" font-size="24" font-weight="700">Map preview</text>
-</svg>
-`)}`;
 
 export const Route = createFileRoute("/discover")({
   head: () => ({ meta: [{ title: "Find professionals — Servio" }] }),
