@@ -29,4 +29,4 @@ export const mapImage = `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`
   <path d="M128 66 L144 50" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" />
   <rect x="28" y="48" width="10" height="10" rx="2" fill="#dbeafe" />
 </svg>
-`)};
+`)}`;
