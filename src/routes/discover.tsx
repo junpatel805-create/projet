@@ -6,6 +6,23 @@ import { Map, SlidersHorizontal, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
+const mapImage = `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420">
+  <rect width="800" height="420" fill="#eff6ff"/>
+  <rect x="40" y="40" width="720" height="340" rx="28" fill="#ffffff" stroke="#dbeafe" stroke-width="4"/>
+  <path d="M120 120 L220 120 L260 160 L340 160 L380 120 L460 120" fill="none" stroke="#93c5fd" stroke-width="18" stroke-linecap="round"/>
+  <path d="M180 220 L260 220 L300 260 L380 260 L420 220 L500 220" fill="none" stroke="#bfdbfe" stroke-width="14" stroke-linecap="round"/>
+  <path d="M140 280 L220 280 L260 240 L320 240 L360 280 L440 280" fill="none" stroke="#c7d2fe" stroke-width="10" stroke-linecap="round"/>
+  <rect x="120" y="60" width="120" height="40" rx="12" fill="#eef2ff"/>
+  <rect x="520" y="80" width="140" height="36" rx="10" fill="#eef2ff"/>
+  <circle cx="180" cy="110" r="10" fill="#2563eb"/>
+  <circle cx="380" cy="140" r="10" fill="#2563eb"/>
+  <circle cx="340" cy="240" r="10" fill="#2563eb"/>
+  <circle cx="520" cy="195" r="10" fill="#2563eb"/>
+  <text x="100" y="330" fill="#3b82f6" font-family="Inter, sans-serif" font-size="24" font-weight="700">Map preview</text>
+</svg>
+`)}`;
+
 export const Route = createFileRoute("/discover")({
   head: () => ({ meta: [{ title: "Find professionals — Servio" }] }),
   component: Discover,
@@ -104,24 +121,13 @@ function Discover() {
             <Button variant="outline" size="sm" className="gap-2 lg:hidden"><SlidersHorizontal className="h-4 w-4" /> Filters</Button>
           </div>
 
-          {/* Map placeholder */}
-          <div className="mb-4 hidden h-40 overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-primary/10 via-card to-accent/10 p-6 shadow-soft md:block">
-            <div className="flex h-full items-center justify-between">
-              <div>
-                <p className="text-sm font-semibold">Pros near you</p>
-                <p className="text-xs text-muted-foreground">{professionals.filter(p => p.distance > 0 && p.distance < 5).length} within 5 miles</p>
-              </div>
-              <div className="relative h-full w-1/2">
-                <div className="absolute inset-0 grid grid-cols-6 grid-rows-3 gap-1 opacity-40">
-                  {Array.from({ length: 18 }).map((_, i) => (
-                    <div key={i} className="rounded bg-primary/20" />
-                  ))}
-                </div>
-                {professionals.slice(0, 4).map((p, i) => (
-                  <span key={p.id} className="absolute h-3 w-3 animate-pulse rounded-full bg-primary ring-4 ring-primary/20" style={{ left: `${20 + i * 18}%`, top: `${20 + (i % 2) * 40}%` }} />
-                ))}
-              </div>
-            </div>
+          {/* Map image */}
+          <div className="mb-4 hidden h-40 overflow-hidden rounded-2xl border border-border bg-card shadow-soft md:block">
+            <img
+              src={mapImage}
+              alt="Map preview"
+              className="h-full w-full object-cover"
+            />
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-2">
