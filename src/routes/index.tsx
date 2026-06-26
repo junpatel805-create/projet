@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Button } from "@/components/ui/button";
+import { GoogleMapEmbed } from "@/components/GoogleMapEmbed";
 import { ProCard } from "@/components/ProCard";
 import { categories, professionals, testimonials } from "@/lib/mock-data";
 import {
@@ -224,31 +225,7 @@ function Landing() {
             <p className="mt-3 text-muted-foreground">Distance, ratings and availability — all on one map.</p>
           </div>
           <div className="mt-10 grid gap-6 lg:grid-cols-[2fr_1fr]">
-            <div className="relative h-[420px] overflow-hidden rounded-2xl border border-border shadow-soft">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-accent to-success/10" />
-              <div
-                className="absolute inset-0 opacity-40"
-                style={{ backgroundImage: "linear-gradient(to right, rgba(30,58,138,.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(30,58,138,.08) 1px, transparent 1px)", backgroundSize: "40px 40px" }}
-              />
-              {professionals.slice(0, 5).map((p, i) => (
-                <div
-                  key={p.id}
-                  className="absolute"
-                  style={{ top: `${15 + i * 14}%`, left: `${10 + i * 16}%` }}
-                >
-                  <div className="relative">
-                    <span className="absolute inset-0 -m-2 animate-ping rounded-full bg-primary/30" />
-                    <span className="relative grid h-10 w-10 place-items-center rounded-full bg-primary text-primary-foreground shadow-elevated ring-4 ring-surface">
-                      <MapPin className="h-4 w-4" />
-                    </span>
-                  </div>
-                </div>
-              ))}
-              <div className="absolute bottom-4 left-4 rounded-xl bg-surface px-4 py-3 text-xs shadow-card">
-                <p className="font-semibold text-foreground">Showing 12 pros</p>
-                <p className="text-muted-foreground">within 5 km • Surat</p>
-              </div>
-            </div>
+            <GoogleMapEmbed className="h-[420px] min-h-[260px] w-full" />
             <div className="space-y-3">
               {professionals.slice(0, 4).map((p) => (
                 <Link key={p.id} to="/pro/$proId" params={{ proId: p.id }} className="flex items-center gap-3 rounded-xl border border-border bg-card p-3 shadow-soft transition-all hover:border-primary/30">
