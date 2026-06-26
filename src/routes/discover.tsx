@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AppShell } from "@/components/AppShell";
 import { ProCard } from "@/components/ProCard";
-import { GoogleMapEmbed } from "@/components/GoogleMapEmbed";
 import { professionals, categories } from "@/lib/mock-data";
 import { Map, SlidersHorizontal, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -105,9 +104,24 @@ function Discover() {
             <Button variant="outline" size="sm" className="gap-2 lg:hidden"><SlidersHorizontal className="h-4 w-4" /> Filters</Button>
           </div>
 
-          {/* Google Map embed */}
-          <div className="mb-4 hidden overflow-hidden rounded-2xl border border-border shadow-soft md:block">
-            <GoogleMapEmbed height="240px" />
+          {/* Map placeholder */}
+          <div className="mb-4 hidden h-40 overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-primary/10 via-card to-accent/10 p-6 shadow-soft md:block">
+            <div className="flex h-full items-center justify-between">
+              <div>
+                <p className="text-sm font-semibold">Pros near you</p>
+                <p className="text-xs text-muted-foreground">{professionals.filter(p => p.distance > 0 && p.distance < 5).length} within 5 miles</p>
+              </div>
+              <div className="relative h-full w-1/2">
+                <div className="absolute inset-0 grid grid-cols-6 grid-rows-3 gap-1 opacity-40">
+                  {Array.from({ length: 18 }).map((_, i) => (
+                    <div key={i} className="rounded bg-primary/20" />
+                  ))}
+                </div>
+                {professionals.slice(0, 4).map((p, i) => (
+                  <span key={p.id} className="absolute h-3 w-3 animate-pulse rounded-full bg-primary ring-4 ring-primary/20" style={{ left: `${20 + i * 18}%`, top: `${20 + (i % 2) * 40}%` }} />
+                ))}
+              </div>
+            </div>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-2">
