@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AppShell } from "@/components/AppShell";
 import { ProCard } from "@/components/ProCard";
+import { GoogleMapEmbed } from "@/components/GoogleMapEmbed";
 import { professionals, categories } from "@/lib/mock-data";
-import { mapImage } from "@/lib/map-image";
 import { Map, SlidersHorizontal, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -105,13 +105,9 @@ function Discover() {
             <Button variant="outline" size="sm" className="gap-2 lg:hidden"><SlidersHorizontal className="h-4 w-4" /> Filters</Button>
           </div>
 
-          {/* Map image */}
-          <div className="mb-4 hidden h-40 overflow-hidden rounded-2xl border border-border bg-card shadow-soft md:block">
-            <img
-              src={mapImage}
-              alt="Map preview"
-              className="h-full w-full object-cover"
-            />
+          {/* Google Map embed */}
+          <div className="mb-4 hidden overflow-hidden rounded-2xl border border-border shadow-soft md:block">
+            <GoogleMapEmbed height="240px" />
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-2">

@@ -3,8 +3,8 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Button } from "@/components/ui/button";
 import { ProCard } from "@/components/ProCard";
+import { GoogleMapEmbed } from "@/components/GoogleMapEmbed";
 import { categories, professionals, testimonials } from "@/lib/mock-data";
-import { mapImage } from "@/lib/map-image";
 import {
   Search, MapPin, ArrowRight, Star, ShieldCheck, BadgeCheck,
   ClipboardList, MessageSquare, Wallet, Users, Briefcase, Building2, Award,
@@ -108,7 +108,7 @@ function Landing() {
               <div className="absolute left-0 top-44 w-[280px] rounded-2xl border border-border bg-card p-5 shadow-elevated">
                 <p className="text-[10px] uppercase tracking-widest text-primary">Map preview</p>
                 <div className="mt-2 overflow-hidden rounded-lg border border-border bg-background">
-                  <img src={mapImage} alt="Map preview" className="h-32 w-full object-cover" />
+                  <GoogleMapEmbed height="128px" />
                 </div>
                 <p className="mt-3 text-xs text-muted-foreground">3 pros within 2km · Surat</p>
               </div>
