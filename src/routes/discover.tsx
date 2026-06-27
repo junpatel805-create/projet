@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AppShell } from "@/components/AppShell";
+import { GoogleMapEmbed } from "@/components/GoogleMapEmbed";
 import { ProCard } from "@/components/ProCard";
 import { professionals, categories } from "@/lib/mock-data";
 import { Map, SlidersHorizontal, Search } from "lucide-react";
@@ -105,13 +106,7 @@ function Discover() {
           </div>
 
           <div className="mb-4 hidden overflow-hidden rounded-2xl border border-border bg-card shadow-soft md:block">
-            <img
-              src="/static-map.svg"
-              alt="Static map showing nearby professionals"
-              className="h-40 w-full object-cover"
-              loading="eager"
-              decoding="async"
-            />
+            <GoogleMapEmbed className="h-40 w-full" location="San Francisco, CA" title="Nearby professionals map" />
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-2">
