@@ -107,8 +107,8 @@ function Landing() {
 
               <div className="absolute left-0 top-44 w-[280px] rounded-2xl border border-border bg-card p-5 shadow-elevated">
                 <p className="text-[10px] uppercase tracking-widest text-primary">Map preview</p>
-                <div className="mt-2 grid h-32 place-items-center rounded-lg bg-gradient-to-br from-primary/10 via-accent to-success/10">
-                  <MapPin className="h-6 w-6 text-primary" />
+                <div className="mt-2 overflow-hidden rounded-xl border border-border bg-background">
+                  <GoogleMapEmbed className="h-32 w-full" location="Surat, India" title="Map preview" />
                 </div>
                 <p className="mt-3 text-xs text-muted-foreground">3 pros within 2km · Surat</p>
               </div>
